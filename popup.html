@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fact Checker</title>
+    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <h2>Fact Checker</h2>
+    
+    <!-- Setup Section -->
+    <div id="setupSection">
+      <h3>Setup Required</h3>
+      <p>Please provide your API keys to use the fact checker:</p>
+      
+      <div class="input-group">
+        <label for="googleApiKey">Google Custom Search API Key:</label>
+        <input type="password" id="googleApiKey" placeholder="Enter your Google API key">
+        <small><a href="https://developers.google.com/custom-search/v1/overview" target="_blank">Get API Key</a></small>
+      </div>
+      
+      <div class="input-group">
+        <label for="googleCx">Google Custom Search Engine ID:</label>
+        <input type="text" id="googleCx" placeholder="Enter your Custom Search Engine ID">
+        <small><a href="https://cse.google.com/cse/" target="_blank">Create Search Engine</a></small>
+      </div>
+      
+      <div class="input-group">
+        <label for="geminiApiKey">Gemini API Key:</label>
+        <input type="password" id="geminiApiKey" placeholder="Enter your Gemini API key">
+        <small><a href="https://makersuite.google.com/app/apikey" target="_blank">Get Gemini API Key</a></small>
+      </div>
+      
+      <button id="saveKeysBtn">Save Keys</button>
+      <div id="setupMessage"></div>
+    </div>
+
+    <!-- Fact Checking Section -->
+    <div id="factCheckSection" style="display: none;">
+      <textarea id="inputText" placeholder="Paste a claim here..."></textarea>
+      <button id="checkBtn">Check</button>
+      <div id="result">Result will appear here</div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

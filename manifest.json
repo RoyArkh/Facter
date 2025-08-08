@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Fact Checker Extension",
+  "version": "1.0",
+  "description": "Paste a claim and check if it's factual via search.",
+  "permissions": ["activeTab", "storage"],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
