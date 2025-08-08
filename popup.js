@@ -1,3 +1,5 @@
+// prettier version of popup.js that complements the improved UI
+
 // Global variables to store API keys
 let apiKey = null;
 let cx = null;
@@ -53,9 +55,7 @@ document.getElementById("saveKeysBtn").addEventListener("click", async () => {
     apiKey = googleApiKey;
     cx = googleCx;
     geminiKey = geminiApiKey;
-    
     setupMessage.innerHTML = '<span style="color: green;">Keys saved successfully! Loading fact checker...</span>';
-    
     // Switch to fact checking interface after a short delay
     setTimeout(() => {
       showFactCheckInterface();
@@ -134,11 +134,12 @@ Verdict: True / False / Disputed
     const geminiData = await geminiRes.json();
     const text = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || "No response from Gemini.";
 
+    // Extract the verdict
     const verdictMatch = text.match(/Verdict:\s*(True|False|Disputed)/i);
     const verdict = verdictMatch ? verdictMatch[1].toUpperCase() : "UNKNOWN";
 
+    // Determine supporting sources. If a verdict is clear (True/False), search for matches in the response.
     let supportingSources;
-
     if (verdict === "TRUE" || verdict === "FALSE") {
       supportingSources = data.items
         .filter(item =>
@@ -147,7 +148,6 @@ Verdict: True / False / Disputed
         )
         .slice(0, 2);
     }
-
     // Fallback for Disputed/Unknown or if no matches
     if (!supportingSources || supportingSources.length === 0) {
       supportingSources = data.items.slice(0, 2);
@@ -171,7 +171,7 @@ Verdict: True / False / Disputed
   }
 });
 
-// Optional helper: choose a color based on verdict
+// Helper: choose a colour based on verdict
 function verdictColor(v) {
   switch (v.toUpperCase()) {
     case "TRUE": return "green";

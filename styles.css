@@ -1,38 +1,103 @@
+/* Improved styling for the fact checker extension
+ *
+ * This stylesheet introduces a cleaner, more modern look while preserving
+ * the familiar green colour palette. Without touching the HTML, we target
+ * existing IDs to give the page soft card backgrounds, generous spacing
+ * and visually appealing typography. The result is a friendlier and more
+ * professional UI that still feels light and easy to use.
+ */
+
+/* Base page layout */
 body {
   font-family: Arial, sans-serif;
-  width: 350px;
+  width: 360px;
   padding: 15px;
+  background-color: #f0f8f5; /* very light green tint */
+  box-sizing: border-box;
 }
 
+/* Headings */
+h2, h3 {
+  color: #2e7d32; /* dark green for contrast */
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Section containers behave like cards. We can't add a class to the HTML,
+   so target the existing IDs directly. */
+#setupSection, #factCheckSection {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+/* Text area styling */
 textarea {
   width: 100%;
   height: 80px;
   margin-bottom: 10px;
   font-size: 14px;
+  padding: 8px;
+  border: 1px solid #c8e6c9; /* light green border */
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
 }
 
+/* Buttons */
 button {
-  padding: 8px 12px;
+  display: inline-block;
+  padding: 10px 16px;
   font-size: 14px;
   cursor: pointer;
   margin-bottom: 10px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #4caf50; /* main green */
+  color: #ffffff;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
 }
 
 button:hover {
   background-color: #45a049;
 }
 
+/* Result panel styling */
 #result {
-  background-color: #f5f5f5;
+  background-color: #e8f5e9; /* pale green */
   padding: 10px;
   border-radius: 6px;
+  border: 1px solid #c8e6c9;
+  color: #2e7d32;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
-/* Setup section styles */
+/* Lists inside the result (Top Sources) */
+#result ul {
+  padding-left: 20px;
+  margin: 5px 0;
+}
+
+#result li {
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+/* Hyperlinks: subtle green with underline on hover */
+a {
+  color: #1b5e20;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Input group labels and fields in setup */
 .input-group {
   margin-bottom: 15px;
 }
@@ -42,12 +107,13 @@ button:hover {
   margin-bottom: 5px;
   font-weight: bold;
   font-size: 14px;
+  color: #2e7d32;
 }
 
 .input-group input {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid #c8e6c9;
   border-radius: 4px;
   font-size: 14px;
   box-sizing: border-box;
@@ -61,7 +127,7 @@ button:hover {
 }
 
 .input-group small a {
-  color: #4CAF50;
+  color: #388e3c;
   text-decoration: none;
 }
 
@@ -69,6 +135,8 @@ button:hover {
   text-decoration: underline;
 }
 
+/* Setup message styling: we rely on inline colour assignments for success/error,
+   but ensure the container spacing is consistent */
 #setupMessage {
   margin-top: 10px;
   padding: 8px;
@@ -76,7 +144,28 @@ button:hover {
   font-size: 14px;
 }
 
-h3 {
-  margin-top: 0;
-  color: #333;
+/* Setup guide link styling */
+.setup-guide-link {
+  margin-top: 15px;
+  text-align: center;
+  padding-top: 10px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.setup-guide-link a {
+  color: #4caf50;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid #4caf50;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.setup-guide-link a:hover {
+  background-color: #4caf50;
+  color: #ffffff;
+  text-decoration: none;
 }
