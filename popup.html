@@ -1,44 +1,69 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Fact Checker</title>
-    <!-- Use the improved stylesheet with a cohesive green theme -->
+    <title>Facter</title>
     <link rel="stylesheet" href="styles.css" />
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h2>Fact Checker</h2>
+    <div class="header">
+      <div class="logo">Facter</div>
+    </div>
+    
     <!-- Setup Section -->
-    <div id="setupSection">
-      <h3>Setup Required</h3>
-      <p>Please provide your API keys to use the fact checker:</p>
+    <div id="setupSection" class="card">
+      <h3>API Setup</h3>
+      <p class="subtext">To get started, please provide your keys:</p>
+      
       <div class="input-group">
-        <label for="googleApiKey">Google Custom Search API Key:</label>
-        <input type="password" id="googleApiKey" placeholder="Enter your Google API key">
-        <small><a href="https://developers.google.com/custom-search/v1/overview" target="_blank">Get API Key</a></small>
+        <label for="googleApiKey">Google Search API Key</label>
+        <div class="input-with-hint">
+          <input type="password" id="googleApiKey" placeholder="Enter your Google API key">
+          <a href="https://developers.google.com/custom-search/v1/overview" target="_blank" class="hint-link">?</a>
+        </div>
       </div>
+      
       <div class="input-group">
-        <label for="googleCx">Google Custom Search Engine ID:</label>
-        <input type="text" id="googleCx" placeholder="Enter your Custom Search Engine ID">
-        <small><a href="https://cse.google.com/cse/" target="_blank">Create Search Engine</a></small>
+        <label for="googleCx">Search Engine ID</label>
+        <div class="input-with-hint">
+          <input type="text" id="googleCx" placeholder="Enter your Custom Search Engine ID">
+          <a href="https://cse.google.com/cse/" target="_blank" class="hint-link">?</a>
+        </div>
       </div>
+      
       <div class="input-group">
-        <label for="geminiApiKey">Gemini API Key:</label>
-        <input type="password" id="geminiApiKey" placeholder="Enter your Gemini API key">
-        <small><a href="https://makersuite.google.com/app/apikey" target="_blank">Get Gemini API Key</a></small>
+        <label for="geminiApiKey">Gemini API Key</label>
+        <div class="input-with-hint">
+          <input type="password" id="geminiApiKey" placeholder="Enter your Gemini API key">
+          <a href="https://makersuite.google.com/app/apikey" target="_blank" class="hint-link">?</a>
+        </div>
       </div>
-      <button id="saveKeysBtn">Save Keys</button>
-      <div id="setupMessage"></div>
+      
+      <button id="saveKeysBtn" class="primary-btn">
+        <span class="btn-icon">✓</span> Save Keys
+      </button>
+      
+      <hr>
+      <div id="setupMessage" class="message-box"></div>
       <div class="setup-guide-link">
-        <a href="https://github.com/RoyArkh/Facter/blob/main/README.md" target="_blank">Full setup guide</a>
+        <a href="https://github.com/RoyArkh/Facter/blob/main/README.md" target="_blank">
+          <span class="guide-icon">📘</span> Full Setup Guide
+        </a>
       </div>
     </div>
+    
     <!-- Fact Checking Section -->
-    <div id="factCheckSection" style="display: none;">
-      <textarea id="inputText" placeholder="Paste a claim here..."></textarea>
-      <button id="checkBtn">Check</button>
-      <div id="result">Result will appear here</div>
+    <div id="factCheckSection" class="card" style="display: none;">
+      <!-- <h3>Check Fact</h3> -->
+      <textarea id="inputText" placeholder="Paste a claim or statement to verify..."></textarea>
+      <button id="checkBtn" class="primary-btn">
+        <span class="btn-icon">✨</span> Check Fact <span class="btn-icon">✨</span> 
+      </button>
+      <div id="result" class="result-box">
+        <div class="result-placeholder">Results will appear here</div>
+      </div>
     </div>
+    
     <script src="popup.js"></script>
   </body>
 </html>

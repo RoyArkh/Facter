@@ -1,10 +1,22 @@
 {
   "manifest_version": 3,
-  "name": "Fact Checker Extension",
+  "name": "Facter - Stay True!",
   "version": "1.0",
-  "description": "Paste a claim and check if it's factual via search.",
+  "description": "Facter is an easy-to-use customizable fact checker. You can paste anything in it and with the power of advanced analysis and AI it will help you identify what is real and what is fake.",
   "permissions": ["activeTab", "storage"],
   "action": {
+    "default_icon": {
+      "16": "assets/Facter.png",
+      "32": "assets/Facter.png",
+      "48": "assets/Facter.png",
+      "128": "assets/Facter.png"
+    },
     "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "assets/Facter.png",
+    "32": "assets/Facter.png",
+    "48": "assets/Facter.png",
+    "128": "assets/Facter.png"
   }
 }

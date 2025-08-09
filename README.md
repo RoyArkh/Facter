@@ -2,14 +2,23 @@
 
 ## TODO
 - [x] Add the full guide in readme
-- [ ] Update readme with full description of the project.
-- [ ] Upgrade UI
+- [x] Update readme with full description of the project.
+- [x] Upgrade UI
 - [ ] Create a presentation
 - [ ] Gather feedback
 - [ ] Make a demo video
+- [ ] Add logout button
+- [ ] Change guide button
 
 ## Mission 
 
+Facter was born from the need to simplify the process of verifying information encountered online. In an age where misinformation spreads quickly, students and researchers are often left spending excessive time manually cross-checking claims against credible sources. This not only interrupts their workflow but can also make rigorous verification feel tedious. Facter solves this by combining customizable search capabilities with AI-powered analysis, enabling users to highlight or paste a statement and instantly see a verdict supported by relevant references.
+
+The project’s mission is to empower users with a flexible fact-checking environment that adapts to their unique research needs. By allowing the integration of a custom search engine, Facter can be tailored to specific domains, whether that’s scientific journals, legal resources, historical archives, or trusted news outlets. For general use, it can be set to search broad sites like Wikipedia or Google Scholar, enabling a quick and accessible general-purpose fact-checker. This flexibility makes it valuable for both specialized academic work of students and everyday information verification.
+
+The usefulness of Facter lies in its balance between precision and convenience. Instead of requiring users to sift through countless search results, it automatically gathers snippets from curated sources and uses an AI model to interpret and summarize the consensus. The result is an easy-to-read verdict, supplemented by direct links to top supporting references. This design not only helps users make informed decisions faster but also reinforces critical thinking by showing the evidence behind each conclusion, making it a powerful tool in the fight against misinformation.
+
+In cases where the results do not dictate any single coherent story, that is when different sources seem to provide different information, Facter gives the power to the user. This project is not meant to be your "holy grail of all answers" that you will blindly follow. The whole point is to encourage critical thinking, be that within the website that the user tries to fact check or the results that Facter provides. 
 
 ## User's Setup guide
 ### Your Engine
@@ -74,5 +83,5 @@ Then go to chrome://extensions/ in chrome. Press load unpacked and choose the fo
 ![Programmable Search Engine overview](assets/image9.png)
 
 
-**Use Facter, find the truth!**
+**Use Facter, stay true.**
 

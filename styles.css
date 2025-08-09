@@ -1,171 +1,242 @@
-/* Improved styling for the fact checker extension
- *
- * This stylesheet introduces a cleaner, more modern look while preserving
- * the familiar green colour palette. Without touching the HTML, we target
- * existing IDs to give the page soft card backgrounds, generous spacing
- * and visually appealing typography. The result is a friendlier and more
- * professional UI that still feels light and easy to use.
- */
+/* Modern, clean fact-checker extension with improved green theme */
+:root {
+  --primary-green: #2e8b57;
+  --light-green: #e8f5e9;
+  --dark-green: #1b5e20;
+  --accent-green: #4caf50;
+  --background: #f5fbf7;
+  --card-bg: #ffffff;
+  --text-dark: #333333;
+  --text-medium: #555555;
+  --text-light: #777777;
+  --border-color: #d1e7dd;
+  --success-color: #2e8b57;
+  --error-color: #d32f2f;
+}
 
-/* Base page layout */
+/* Base styles */
 body {
-  font-family: Arial, sans-serif;
-  width: 360px;
-  padding: 15px;
-  background-color: #f0f8f5; /* very light green tint */
+  font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
+  width: 380px;
+  padding: 0;
+  margin: 0;
+  background-color: var(--background);
+  color: var(--text-dark);
+  line-height: 1.5;
   box-sizing: border-box;
 }
 
-/* Headings */
-h2, h3 {
-  color: #2e7d32; /* dark green for contrast */
-  margin-top: 0;
-  margin-bottom: 10px;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
-/* Section containers behave like cards. We can't add a class to the HTML,
-   so target the existing IDs directly. */
-#setupSection, #factCheckSection {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  margin-bottom: 15px;
+/* Header styles */
+.header {
+  padding: 16px 20px;
+  background-color: var(--primary-green);
+  color: white;
+  margin-bottom: 12px;
 }
 
-/* Text area styling */
-textarea {
-  width: 100%;
-  height: 80px;
-  margin-bottom: 10px;
-  font-size: 14px;
-  padding: 8px;
-  border: 1px solid #c8e6c9; /* light green border */
-  border-radius: 4px;
-  box-sizing: border-box;
-  resize: vertical;
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
-/* Buttons */
-button {
-  display: inline-block;
-  padding: 10px 16px;
-  font-size: 14px;
-  cursor: pointer;
-  margin-bottom: 10px;
-  background-color: #4caf50; /* main green */
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.2s ease;
+.tagline {
+  font-size: 13px;
+  opacity: 0.9;
+  margin-top: 2px;
 }
 
-button:hover {
-  background-color: #45a049;
+/* Card styling */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  padding: 18px 20px;
+  margin: 0 16px 16px;
 }
 
-/* Result panel styling */
-#result {
-  background-color: #e8f5e9; /* pale green */
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #c8e6c9;
-  color: #2e7d32;
-  font-size: 14px;
-  margin-bottom: 10px;
+h3 {
+  color: var(--primary-green);
+  font-size: 16px;
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* Lists inside the result (Top Sources) */
-#result ul {
-  padding-left: 20px;
-  margin: 5px 0;
+.icon {
+  font-size: 18px;
 }
 
-#result li {
-  margin-bottom: 4px;
-  line-height: 1.3;
+.subtext {
+  color: var(--text-medium);
+  font-size: 13px;
+  margin: 0 0 16px 0;
 }
 
-/* Hyperlinks: subtle green with underline on hover */
-a {
-  color: #1b5e20;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Input group labels and fields in setup */
+/* Input groups */
 .input-group {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
 .input-group label {
   display: block;
-  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.input-with-hint {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-hint input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 13px;
+  background-color: #f9f9f9;
+  transition: all 0.2s;
+}
+
+.input-with-hint input:focus {
+  outline: none;
+  border-color: var(--accent-green);
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+  background-color: white;
+}
+
+.hint-link {
+  position: absolute;
+  right: 10px;
+  color: var(--text-light);
+  text-decoration: none;
   font-weight: bold;
   font-size: 14px;
-  color: #2e7d32;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
 }
 
-.input-group input {
+.hint-link:hover {
+  color: var(--primary-green);
+  background-color: rgba(46, 139, 87, 0.1);
+}
+
+/* Buttons */
+.primary-btn {
   width: 100%;
-  padding: 8px;
-  border: 1px solid #c8e6c9;
-  border-radius: 4px;
+  padding: 12px;
+  background-color: var(--primary-green);
+  color: white;
+  border: none;
+  border-radius: 8px;
   font-size: 14px;
-  box-sizing: border-box;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+  margin: 8px 0 12px;
 }
 
-.input-group small {
-  display: block;
-  margin-top: 3px;
-  font-size: 12px;
-  color: #666;
+.primary-btn:hover {
+  background-color: var(--dark-green);
+  transform: translateY(-1px);
 }
 
-.input-group small a {
-  color: #388e3c;
-  text-decoration: none;
+.btn-icon {
+  font-size: 16px;
 }
 
-.input-group small a:hover {
-  text-decoration: underline;
-}
-
-/* Setup message styling: we rely on inline colour assignments for success/error,
-   but ensure the container spacing is consistent */
-#setupMessage {
-  margin-top: 10px;
-  padding: 8px;
-  border-radius: 4px;
+/* Textarea */
+textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
   font-size: 14px;
+  margin-bottom: 12px;
+  resize: vertical;
+  background-color: #f9f9f9;
+  transition: all 0.2s;
+  box-sizing: border-box; /* Add this line */
 }
 
-/* Setup guide link styling */
-.setup-guide-link {
-  margin-top: 15px;
+textarea:focus {
+  outline: none;
+  border-color: var(--accent-green);
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+  background-color: white;
+}
+
+/* Result box */
+.result-box {
+  background-color: var(--light-green);
+  border-radius: 8px;
+  padding: 14px;
+  border: 1px solid var(--border-color);
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+.result-placeholder {
+  color: var(--text-light);
+  font-style: italic;
   text-align: center;
-  padding-top: 10px;
-  border-top: 1px solid #e0e0e0;
+  padding: 8px;
+}
+
+/* Message box */
+.message-box {
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin: 12px 0;
+  line-height: 1.4;
+}
+
+/* Setup guide link */
+.setup-guide-link {
+  text-align: center;
+  margin-top: 20px;
 }
 
 .setup-guide-link a {
-  color: #4caf50;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  padding: 8px 16px;
-  border: 1px solid #4caf50;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background-color: rgba(46, 139, 87, 0.1);
+  color: var(--primary-green) !important;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s;
 }
 
 .setup-guide-link a:hover {
-  background-color: #4caf50;
-  color: #ffffff;
+  background-color: rgba(46, 139, 87, 0.2);
   text-decoration: none;
 }
+
+.guide-icon {
+  font-size: 16px;
+}
+
