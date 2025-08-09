@@ -4,8 +4,7 @@
 - [x] Add the full guide in readme
 - [x] Update readme with full description of the project.
 - [x] Upgrade UI
-- [ ] Create a presentation
-- [ ] Gather feedback
+- [x] Create a presentation
 - [ ] Make a demo video
 - [ ] Add logout button
 - [ ] Change guide button

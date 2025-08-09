@@ -99,23 +99,23 @@ document.getElementById("checkBtn").addEventListener("click", async () => {
 
     // Step 3: Build Gemini prompt
     const prompt = `
-You are a fact-checking assistant.
-
-The user submitted the following claim:
-
-"${query}"
-
-Here are search result snippets from reliable sources:
-${evidence}
-
-Based on the above, is the claim likely:
-- True
-- False
-- Disputed or Unclear?
-
-Reply with a short explanation, and end with a single verdict in this format:
-Verdict: True / False / Disputed
-    `.trim();
+    You are a fact-checking assistant.
+    
+    The user submitted the following claim:
+    
+    "${query}"
+    
+    Here are search result snippets from reliable sources:
+    ${evidence}
+    
+    Based on the above, classify the claim as one of:
+    - True
+    - False
+    - Unknown (use this when there isn't enough information or sources conflict)
+    
+    Reply with a short explanation, and end with a single verdict in this format:
+    Verdict: True / False / Unknown
+        `.trim();
 
     resultEl.innerHTML = "🤖 Asking Gemini...";
 
@@ -134,9 +134,10 @@ Verdict: True / False / Disputed
     const geminiData = await geminiRes.json();
     const text = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || "No response from Gemini.";
 
-    // Extract the verdict
-    const verdictMatch = text.match(/Verdict:\s*(True|False|Disputed)/i);
-    const verdict = verdictMatch ? verdictMatch[1].toUpperCase() : "UNKNOWN";
+    // Extract the verdict; map Disputed/Unclear to Unknown
+    const verdictMatch = text.match(/Verdict:\s*(True|False|Unknown|Disputed|Unclear)/i);
+    const rawVerdict = verdictMatch ? verdictMatch[1].toUpperCase() : "UNKNOWN";
+    const verdict = (rawVerdict === "DISPUTED" || rawVerdict === "UNCLEAR") ? "UNKNOWN" : rawVerdict;
 
     // Determine supporting sources. If a verdict is clear (True/False), search for matches in the response.
     let supportingSources;
@@ -176,7 +177,8 @@ function verdictColor(v) {
   switch (v.toUpperCase()) {
     case "TRUE": return "green";
     case "FALSE": return "red";
-    case "DISPUTED": return "orange";
+    case "DISPUTED": return "orange"; // legacy mapping
+    case "UNKNOWN": return "orange";
     default: return "gray";
   }
 }
@@ -184,4 +186,22 @@ function verdictColor(v) {
 // Initialize the extension
 document.addEventListener('DOMContentLoaded', () => {
   checkStoredKeys();
+  // Wire logout if the element exists
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      // Clear keys from storage and memory, then show setup
+      chrome.storage.sync.remove(['googleApiKey', 'googleCx', 'geminiApiKey'], () => {
+        apiKey = null;
+        cx = null;
+        geminiKey = null;
+        // Clear UI state
+        const input = document.getElementById('inputText');
+        const result = document.getElementById('result');
+        if (input) input.value = '';
+        if (result) result.innerHTML = '<div class="result-placeholder">Results will appear here</div>';
+        showSetupInterface();
+      });
+    });
+  }
 });
