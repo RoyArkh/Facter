@@ -15,11 +15,11 @@
 ### Your Engine
 Your engine - is going to be the broad ddatabase of information that is going to be useful to you. If you want to use Facter for general fact checking it makes sense to include trusted sources like FactCheck.org or community websites like Wikipedia which have a lot of infromation. Many countries have a lis of trusted sources with regards to their regions, you can find those online.
 
-#### How to setup the engine
+### How to setup the engine
 First choose the sources that will be suitable for you goal. For example for this test scenario I will choose the following:
-*.wikipedia.org/*
-cloud.google.com/*
-www.encyclopedia.com/*
+- *.wikipedia.org/*
+- cloud.google.com/*
+- www.encyclopedia.com/*
 
 Then head to https://developers.google.com/custom-search/v1/overview
 
@@ -40,7 +40,7 @@ You will get a confirmation screen, there click on Customize and in the page tha
 
 Great! Now you have your search base!
 
-#### The API key
+### The engine API key
 
 Return to the previous page (https://developers.google.com/custom-search/v1/overview) and in the API key section press on "Get a Key". API keys bound to a service account provide the identity and authorization of the service account to a request, so this key will be your unique identifier for this service. 
 
@@ -51,7 +51,7 @@ In the "Select or create project" choose "create a new project" and give it a na
 You will be shown a button "SHOW KEY". Press that and save your new API key. Make sure it is stored securely.
 
 
-#### Gemini access
+### Gemini access
 
 While Facter can we user without AI, it makes the user experience much more complete. Therefore, you need to go to https://aistudio.google.com/app/apikey click on "Create API key" and choose the project we previously created. 
 
@@ -59,5 +59,20 @@ While Facter can we user without AI, it makes the user experience much more comp
 
 Save your API key and store it safely. 
 
-**You are all set!** **Just paste those into Facter and get the truth!**
+**You are all set!** 
+
+### Using in Chrome
+
+Now for easy use you can just download the zip of this repo by clicking on "Code" and "Download zip". Unzip it into any empty place in your computer. 
+
+![Programmable Search Engine overview](assets/image8.png)
+
+Press "Extract all" 
+
+Then go to chrome://extensions/ in chrome. Press load unpacked and choose the folder to which you unzipped the repo. After it gets added 
+
+![Programmable Search Engine overview](assets/image9.png)
+
+
+**Use Facter, find the truth!**
 
